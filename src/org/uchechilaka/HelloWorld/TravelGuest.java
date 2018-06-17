@@ -73,15 +73,19 @@ class TravelGuest {
 //        return hourOfDay + ":" + minuteOfHour;
 //    }
 
-    String getExampleDestinationTimeAtLocalMidnight() {
+    String getExampleDestinationTimeAtLocalHourMinute(int localHour, int localMinute) {
         // Some notes: https://docs.oracle.com/javase/tutorial/datetime/iso/timezones.html
 //        DateTimeFormatter formatWithTimeZone = DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a Z");
         long offsetInHours = timeDifferenceInHours.longValue();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("H:mm");
         LocalDateTime now = LocalDateTime.now();
-        LocalDateTime localMidnight = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0, 0);
+        LocalDateTime localMidnight = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), localHour, localMinute);
         ZonedDateTime localMidnightZoned = ZonedDateTime.of(localMidnight, ZoneId.of("America/New_York"));
         ZonedDateTime destinationZoned = offsetInHours > 0 ? localMidnightZoned.plusHours(offsetInHours) : localMidnightZoned.minusHours(offsetInHours);
         return destinationZoned.format(format);
+    }
+
+    String getExampleDestinationTimeAtLocalMidnight() {
+        return getExampleDestinationTimeAtLocalHourMinute(0, 0);
     }
 }

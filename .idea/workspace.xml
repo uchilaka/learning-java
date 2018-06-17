@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af870a3c-3dba-47a1-b39f-6d01601c3dd1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/org/uchechilaka/HelloWorld/TravelGuest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HelloWorld/org/uchechilaka/HelloWorld/VacationPlanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HelloWorld/org/uchechilaka/HelloWorld/VacationPlanner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/uchechilaka/HelloWorld/TravelGuest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/uchechilaka/HelloWorld/TravelGuest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/uchechilaka/HelloWorld/VacationPlanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/uchechilaka/HelloWorld/VacationPlanner.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -38,8 +36,8 @@
       <file leaf-file-name="VacationPlanner.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/uchechilaka/HelloWorld/VacationPlanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="217" column="24" selection-start-line="217" selection-start-column="24" selection-end-line="217" selection-end-column="24" />
+            <state relative-caret-position="226">
+              <caret line="213" column="87" selection-start-line="213" selection-start-column="87" selection-end-line="213" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#MissingOrInvalidPropertyException#0" />
@@ -51,10 +49,12 @@
       <file leaf-file-name="TravelGuest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/uchechilaka/HelloWorld/TravelGuest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+            <state relative-caret-position="351">
+              <caret line="88" column="64" selection-start-line="88" selection-start-column="64" selection-end-line="88" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3773#3774#0" expanded="true" />
+                <element signature="e#3839#3840#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -342,18 +342,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/uchechilaka/HelloWorld/TravelGuest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+        <state relative-caret-position="351">
+          <caret line="88" column="64" selection-start-line="88" selection-start-column="64" selection-end-line="88" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3773#3774#0" expanded="true" />
+            <element signature="e#3839#3840#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/uchechilaka/HelloWorld/VacationPlanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="217" column="24" selection-start-line="217" selection-start-column="24" selection-end-line="217" selection-end-column="24" />
+        <state relative-caret-position="226">
+          <caret line="213" column="87" selection-start-line="213" selection-start-column="87" selection-end-line="213" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#MissingOrInvalidPropertyException#0" />

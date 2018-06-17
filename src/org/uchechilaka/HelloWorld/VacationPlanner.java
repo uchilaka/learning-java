@@ -208,9 +208,10 @@ class VacationPlanner {
         try {
             currentGuest.timeDifferenceInHours = input.nextDouble();
             System.out.print("That means that when it is midnight at home it will be "
-                    + currentGuest.getExampleDestinationTimeAtLocalMidnight());
+                    + currentGuest.getExampleDestinationTimeAtLocalMidnight() + " in your travel destination "
+                    + "and when it is noon at home it will be " + currentGuest.getExampleDestinationTimeAtLocalHourMinute(12, 0));
         } catch (Exception e) {
-            timeDifference("Invalid input. Let's try again - " + INPUT_PROMPT_TRAVEL_DAYS);
+            timeDifference("Invalid input. Let's try again - " + INPUT_PROMPT_TIME_DIFF);
         }
     }
 
@@ -235,6 +236,7 @@ class VacationPlanner {
         calcExpenseSummary();
         sectionBreak();
         timeDifference(INPUT_PROMPT_TIME_DIFF);
+        sectionBreak();
         countryArea();
     }
 }
