@@ -37,7 +37,7 @@ class VacationPlanner {
     private static String INPUT_PROMPT_TRAVEL_BUDGET = "How much money, in USD, are you planning to spend on your trip? ";
     private static String INPUT_PROMPT_CURRENCY_ALPHA3 = "What is the three letter currency symbol for your travel destination? ";
     private static String INPUT_PROMPT_TIME_DIFF = "What is the time difference, in hours, between your home and your destination? ";
-    private static String INPUT_PROMPT_SQ_AREA = "What is the square area of your destination country in km²? ";
+    private static String INPUT_PROMPT_SQ_AREA = "What is the square area of your destination country in KM²? ";
     static String REGEX_STRING_NEGATIVE_INPUT = "(?i:no?.*)";
     static String REGEX_STRING_AFFIRMATIVE_INPUT = "(?i:y(es)?)";
 
@@ -220,7 +220,29 @@ class VacationPlanner {
         timeDifference();
     }
 
+    // @TODO figure out haversine for bonus problem: https://en.wikipedia.org/wiki/Haversine_formula
+//    private Double haversine(Double point) {
+//        return (1 - Math.cos(point)) / 2.0;
+//    }
+//
+//    private Double haversine(Double pointA, Double pointB) {
+//
+//    }
+
     private void countryArea() {
+        try {
+            currentGuest.destinationAreaInSqKM= input.nextDouble();
+            Double inSqMI = Math.floor(currentGuest.calcDestinationAreaInSqMI() * 100) / 100;
+            System.out.print("In MI² that is " + inSqMI.toString());
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            countryArea("Invalid input. Let's try again - " + INPUT_PROMPT_SQ_AREA);
+        }
+    }
+
+    private void countryArea(String prompt) {
+        System.out.print(prompt);
+        countryArea();
     }
 
 //    void round() {
@@ -237,6 +259,7 @@ class VacationPlanner {
         sectionBreak();
         timeDifference(INPUT_PROMPT_TIME_DIFF);
         sectionBreak();
-        countryArea();
+        countryArea(INPUT_PROMPT_SQ_AREA);
+        sectionBreak();
     }
 }

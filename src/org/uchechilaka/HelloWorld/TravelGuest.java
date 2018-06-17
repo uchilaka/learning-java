@@ -25,6 +25,7 @@ class TravelGuest {
     //    String homeTimeZone;
 //    String destinationTimeZone;
     String destinationName;
+    Double destinationAreaInSqKM;
 
     String getExchangeRatePrompt() throws Exception {
         if (destinationCurrencyAlpha3 == null) {
@@ -87,5 +88,10 @@ class TravelGuest {
 
     String getExampleDestinationTimeAtLocalMidnight() {
         return getExampleDestinationTimeAtLocalHourMinute(0, 0);
+    }
+
+    Double calcDestinationAreaInSqMI() throws MissingOrInvalidPropertyException {
+        if(destinationAreaInSqKM == null) throw new MissingOrInvalidPropertyException("The TravelGuest property destinationAreaInSqKM MUST be populated before using calcDestinationAreaInSqMI");
+        return destinationAreaInSqKM * 0.38610;
     }
 }

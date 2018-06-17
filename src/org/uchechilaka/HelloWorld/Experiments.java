@@ -29,4 +29,8 @@ class Experiments {
             illustrateCapturingInput();
         }
     }
+
+    void testDistanceConversions() {
+
+    }
 }
