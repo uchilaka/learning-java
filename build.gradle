@@ -7,6 +7,7 @@
 // START SNIPPET plugins
 apply plugin: 'java'
 apply plugin: 'idea'
+// @IMPORTANT this plugin (apparently) refers to JVM applications, not CLI ones
 apply plugin: 'application'
 // END SNIPPET plugins
 
