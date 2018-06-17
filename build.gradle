@@ -18,24 +18,25 @@ version = '1.0'
 jar {
     manifest {
         attributes 'Implementation-Title': 'Vacation Planner',
-                   'Implementation-Version': version
+                'Implementation-Version': version
     }
 }
 // @NOTE packagingOptions did not work
 // packagingOptions {
 //   exclude 'main/java/*'
 // }
-//sourceSets {
-//  main {
-//    resources {
-//      exclude 'main/java/*'
-//    }
-//  }
-//}
+sourceSets {
+    main {
+        resources {
+            exclude 'main/java/*'
+            exclude 'org/uchechilaka/HelloWorld/Experiments'
+        }
+    }
+}
 // END SNIPPET customization
 
 // START SNIPPET repo
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 // END SNIPPET repo
