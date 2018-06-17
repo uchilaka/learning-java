@@ -30,73 +30,16 @@ class MissingOrInvalidPropertyException extends Exception {
     }
 }
 
-/**
- * Class for managing travel guest data
- */
-class TravelGuest {
-    TravelGuest() {
-        // @TODO do constructor stuff
-    }
-
-    String[] names;
-    //    private String firstName;
-//    String lastName;
-    String destinationCurrencyAlpha3 = null;
-    Double travelHoursAvailable;
-    Double travelBudgetInDollars;
-    Double destinationExchangeRateToUSD;
-    String expenseSummary;
-    String homeTimeZone;
-    String destinationTimeZone;
-    String destinationName;
-
-    String getExchangeRatePrompt() throws Exception {
-        if (destinationCurrencyAlpha3 == null) {
-            throw new MissingOrInvalidPropertyException("destinationCurrencyAlpha3", "Required property destinationCurrencyAlpha3 MUST be set before you can use this prompt helper function");
-        }
-        return "How many " + destinationCurrencyAlpha3.toUpperCase() + " are there in 1 USD? ";
-    }
-
-    String getFirstName() {
-        //return names.length > 1 ? (firstName == null ? names[1] : firstName) : names[0];
-        return names[0];
-    }
-
-    String getLastName() {
-        return names[names.length - 1];
-    }
-
-    Double calcDailyBudget(Boolean formatted) {
-        // @IMPORTANT do NOT use Math.round! This is because the consideration is for currency, and also not the requirement
-        Double dailyBudget = travelBudgetInDollars / (travelHoursAvailable / 24.0);
-//        long cleanDailyBudget = Math.round(dailyBudget * 100);
-        if(formatted) {
-            long cleanDailyBudget = (int) (dailyBudget * 100);
-            return cleanDailyBudget / 100.0;
-        } else {
-            return dailyBudget;
-        }
-    }
-
-    Double calcTotalBudgetInDestinationCurrency() {
-        Double totalBudget = calcDailyBudget(false) * (travelHoursAvailable / 24.0) * destinationExchangeRateToUSD;
-        return (int) (totalBudget * 100.0) / 100.0;
-    }
-
-    Double calcDailyBudgetInDestinationCurrency() {
-        Double totalBudget = calcDailyBudget(false) * destinationExchangeRateToUSD;
-        return (int) (totalBudget * 100.0) / 100.0;
-    }
-}
-
 class VacationPlanner {
 
     private static String INPUT_PROMPT_NAME = "what's your name? ";
     private static String INPUT_PROMPT_TRAVEL_DAYS = "How many days are you going to spend traveling? ";
     private static String INPUT_PROMPT_TRAVEL_BUDGET = "How much money, in USD, are you planning to spend on your trip? ";
     private static String INPUT_PROMPT_CURRENCY_ALPHA3 = "What is the three letter currency symbol for your travel destination? ";
-    private static String REGEX_STRING_NEGATIVE_INPUT = "(?i:no?.*)";
-    private static String REGEX_STRING_AFFIRMATIVE_INPUT = "(?i:y(es)?)";
+    private static String INPUT_PROMPT_TIME_DIFF = "What is the time difference, in hours, between your home and your destination? ";
+    private static String INPUT_PROMPT_SQ_AREA = "What is the square area of your destination country in km²? ";
+    static String REGEX_STRING_NEGATIVE_INPUT = "(?i:no?.*)";
+    static String REGEX_STRING_AFFIRMATIVE_INPUT = "(?i:y(es)?)";
 
     private Scanner input;
     private TravelGuest currentGuest;
@@ -129,7 +72,7 @@ class VacationPlanner {
                 confirmExit();
             } else {
                 currentGuest.names = fullName.split("\\s+");
-                if(currentGuest.names.length < 2) {
+                if (currentGuest.names.length < 2) {
                     System.out.print("To verify, your last name is " + currentGuest.getLastName() + ", is that correct (Enter N if not, or just Enter to confirm)? ");
                     String response = input.nextLine();
 //                System.out.println("PSST: Found input!");
@@ -252,7 +195,7 @@ class VacationPlanner {
                 + " USD that means per day you can spend up to $" + currentGuest.calcDailyBudget(true) + " USD"
                 + "\nYour total budget in " + currency + " is " + currentGuest.calcTotalBudgetInDestinationCurrency() + " " + currency
                 + ", which per day is " + currentGuest.calcDailyBudgetInDestinationCurrency() + " " + currency;
-        return dayStatement + "\n" + budgetStatement + "...";
+        return dayStatement + "\n" + budgetStatement;
     }
 
     private void calcExpenseSummary() {
@@ -261,17 +204,29 @@ class VacationPlanner {
         System.out.print(currentGuest.expenseSummary);
     }
 
-    void timeDifference() {
+    private void timeDifference() {
+        try {
+            currentGuest.timeDifferenceInHours = input.nextDouble();
+            System.out.print("That means that when it is midnight at home it will be "
+                    + currentGuest.getExampleDestinationTimeAtLocalMidnight());
+        } catch (Exception e) {
+            timeDifference("Invalid input. Let's try again - " + INPUT_PROMPT_TRAVEL_DAYS);
+        }
     }
 
-    void countryArea() {
+    private void timeDifference(String prompt) {
+        System.out.print(prompt);
+        timeDifference();
     }
 
-    void round() {
+    private void countryArea() {
     }
 
-    void bonus() {
-    }
+//    void round() {
+//    }
+//
+//    void bonus() {
+//    }
 
     void begin() {
         greet();
@@ -279,5 +234,7 @@ class VacationPlanner {
         travelTimeAndBudget();
         calcExpenseSummary();
         sectionBreak();
+        timeDifference(INPUT_PROMPT_TIME_DIFF);
+        countryArea();
     }
 }
