@@ -12,7 +12,7 @@ apply plugin: 'application'
 // END SNIPPET plugins
 
 // START SNIPPET customization
-mainClassName = "HelloWorld"
+mainClassName = "App"
 description = "A gradle build for the HelloWorld Java Project"
 version = '1.0'
 jar {
@@ -25,13 +25,13 @@ jar {
 // packagingOptions {
 //   exclude 'main/java/*'
 // }
-sourceSets {
-  main {
-    resources {
-      exclude 'main/java/*'
-    }
-  }
-}
+//sourceSets {
+//  main {
+//    resources {
+//      exclude 'main/java/*'
+//    }
+//  }
+//}
 // END SNIPPET customization
 
 // START SNIPPET repo

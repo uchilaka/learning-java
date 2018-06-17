@@ -24,10 +24,8 @@ An application to capture input from the user and help plan a vacation
  * }
 **/
 
-function greeting(){
+function greetAndCaptureName(){
   // @TODO show greeting
-}
-function captureName() {
   try {
     // @TODO captureName
   } catch (e) {
@@ -35,18 +33,26 @@ function captureName() {
     // @TODO retry
   }
 }
-function captureDestination() {
+function inputDaysBudgetAndDestination() {
   try {
-    // @TODO captureName
+    // @TODO vacation days
+    // @TODO capture dollar budget
+    // @TODO capture destination alpha3
   } catch (e) {
     // @TODO acknowledge
     // @TODO retry
   }
 }
 function main() {
-  greeting()
-  captureName()
-  captureDestination()
+  greetAndCaptureName()
+  inputDaysBudgetAndDestination()
+  inputCurrencyExchangeRate()
+  calcTime()
+  calcAggregatedBudget()
+  inputTimeDifference()
+  calcTimezoneExamples()
+  inputDestCountrySqAreaInKM2()
+  calcDestCountrySqAreaInMI()
 }
 
 ```
